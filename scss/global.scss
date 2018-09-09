@@ -17,12 +17,13 @@ body {
 
 main {
   position: relative;
-  width: 600px;
+  width: 800px;
   height: 500px;
   margin: 40px auto;
 
   .banner {
     z-index: 3;
+    font-family: 'Anton', sans-serif;
   }
 
   .banner-straight-ends {
@@ -41,9 +42,56 @@ main {
         @include after-element();
         background: url('../images/stripe-mask.png');
         opacity: 0.2;
-        width: calc(100% - 4px);
-        height: calc(100% - 4px);
-        border: 2px solid white;
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .dots {
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAALElEQVQYV2NkwAEYYeKhoaH/QezVq1eDxeAS79+/B0sICgqiSqCbCNeBLgEAWGIIBqAkubcAAAAASUVORK5CYII=) repeat;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+      }
+
+      .top {
+        bottom: 3px;
+      }
+
+      .bottom {
+        top: 3px;
+      }
+  
+
+      .links {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 0;
+        left: 0;
+        max-width: 520px;
+
+        ul {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          li {
+            margin: 0;
+            padding: 2px 0 0 0; // space correction
+            color: white;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.95;
+            text-shadow: 1px 2px rgba(0, 0, 0, 0.25);
+            font-size: 14px;
+          }
+        }
       }
     }
 
@@ -53,17 +101,18 @@ main {
       &:before {
         @include after-element();
         width: 31px;
-        height: 20px;
+        height: 16px;
         background: linear-gradient(to right, #111, #232323, rgba(0, 0, 0, 0.25));
         position: absolute;
         top: calc(100% + 1px);
         clip-path: polygon(0 0%, 100% 100%, 100% 0);
         left: -1px;
       }
+
       &:after {
         @include after-element();
         width: 31px;
-        height: 20px;
+        height: 16px;
         background: linear-gradient(to left, #111, #232323, rgba(0, 0, 0, 0.25));
         position: absolute;
         top: calc(100% + 1px);
