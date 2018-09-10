@@ -27,17 +27,10 @@ main {
   }
 
   .banner-straight-ends {
-    .banner {
-      $base-color: #7b9363;
-      width: calc(100% + 60px);
-      height: 50px;
-      margin: 0 -30px;
-      position: absolute;
-      top: 60px;
+    $base-color: #7b9363;
+    @mixin banner-styles {
       border: 1px solid darken($base-color, 5%);
       background-color: $base-color;
-      z-index: 2;
-
       &:before {
         @include after-element();
         width: calc(100% - 2px);
@@ -60,7 +53,7 @@ main {
         height: 4px;
         width: 100%;
       }
-
+      
       .top {
         bottom: 3px;
       }
@@ -68,6 +61,15 @@ main {
       .bottom {
         top: 3px;
       }
+    }
+    .banner {
+      @include banner-styles();
+      width: calc(100% + 60px);
+      height: 50px;
+      margin: 0 -30px;
+      position: absolute;
+      top: 60px;
+      z-index: 2;
   
       .links {
         position: absolute;
@@ -101,11 +103,55 @@ main {
       }
     }
 
+    .left-tail {
+      @include banner-styles();
+      width: 60px;
+      height: 50px;
+      background-color: $base-color;
+      position: absolute;
+      left: -63px;
+      top: 75px;
+      margin: 0;
+      z-index: -3;
+      overflow: hidden;
+      .left-side-shadow-cast {
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0.3),rgba(0,0,0,0));
+        position: absolute;
+        right: 0px;
+        z-index: 3;
+        top:0px;
+      }
+    }
+
+    .right-tail {
+      @include banner-styles();
+      width: 60px;
+      height: 50px;
+      background-color: $base-color;
+      position: absolute;
+      right: -63px;
+      top: 75px;
+      margin: 0;
+      z-index: -3;
+      overflow: hidden;
+      .right-side-shadow-cast {
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0));
+        position: absolute;
+        left: 0px;
+        z-index: 3;
+        top:0px;
+      }
+    }
+
     .main-shadow {
       width: calc(100% - 60px);
       left: 30px;
       height: 50px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.125), rgba(0,0,0,0));
       position: absolute;
       bottom: -50px;
       clip-path: polygon(100% 0, 100% 30%, 50% 7%, 0 30%, 0 0);
@@ -118,7 +164,7 @@ main {
         @include after-element();
         width: 31px;
         height: 16px;
-        background: linear-gradient(to right, #111, #232323, rgba(0, 0, 0, 0.25));
+        background: #222222;
         position: absolute;
         top: calc(100% + 1px);
         clip-path: polygon(0 0%, 100% 100%, 100% 0);
@@ -129,7 +175,7 @@ main {
         @include after-element();
         width: 31px;
         height: 16px;
-        background: linear-gradient(to left, #111, #232323, rgba(0, 0, 0, 0.25));
+        background: #222222;
         position: absolute;
         top: calc(100% + 1px);
         clip-path: polygon(0 100%, 0 0, 100% 0);
